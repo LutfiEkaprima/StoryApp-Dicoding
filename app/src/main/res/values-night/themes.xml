@@ -3,7 +3,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.LoginWithAnimation" parent="Theme.Material3.DayNight">
 
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
     </style>
 </resources>

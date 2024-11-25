@@ -42,12 +42,11 @@ class HomeAdapter(private val onLoading: (Boolean) -> Unit)
                 val context = itemView.context
                 val intent = Intent(context, DetailStoryActivity::class.java)
                 intent.putExtra(itemDataList, story)
-                val optionsCompat:ActivityOptionsCompat =
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        context as Activity,
-                        Pair(binding.imgItemPhoto, "image"),
-                        Pair(binding.tvItemName, "name"),
-                    )
+                val optionsCompat: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    context as Activity,
+                    Pair(binding.imgItemPhoto, "image"),
+                    Pair(binding.tvItemName, "name")
+                )
                 context.startActivity(intent, optionsCompat.toBundle())
                 onLoading(false)
             }

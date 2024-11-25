@@ -28,6 +28,7 @@
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
+            android:transitionName="image"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"
+            android:transitionName="name"
             card_view:layout_constraintTop_toBottomOf="@id/img_item_photo"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"

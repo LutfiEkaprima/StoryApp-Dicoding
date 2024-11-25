@@ -29,27 +29,27 @@
                 tools:visibility="visible" />
 
             <ImageView
-
                 android:id="@+id/iv_detail_photo"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
+                android:transitionName="image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="@string/imagestory"/>
+                android:contentDescription="@string/imagestory" />
 
             <TextView
-                android:transitionName="name"
                 android:id="@+id/tv_detail_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:padding="16dp"
+                android:transitionName="name"
                 app:layout_constraintTop_toBottomOf="@id/iv_detail_photo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tv_story_time"
