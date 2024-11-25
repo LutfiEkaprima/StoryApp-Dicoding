@@ -6,10 +6,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivitySignupBinding
-import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.SignupViewModel
 
 class SignupActivity : AppCompatActivity() {
 
@@ -38,14 +38,14 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.edRegisterPassword.text.toString()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                showMessage("Oops!", "Please fill in all fields.")
+                showMessage("Oops!", getString(R.string.error_form))
                 return@setOnClickListener
             }
 
             if (password.length >= 8) {
                 viewModel.register(name, email, password)
             } else {
-                showMessage("Oops!", "Password must be at least 8 characters long.")
+                showMessage("Oops!", getString(R.string.password_confirm))
             }
         }
     }

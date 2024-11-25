@@ -40,4 +40,9 @@
     <string name="email_validyt">Email is required</string>
     <string name="password_validyt">Password is required</string>
     <string name="password_confirm">Password must not be less than 8 characters</string>
+    <string name="select_media">No Selected Media</string>
+    <string name="logout_msg">Success Log Out</string>
+    <string name="data_validty">Empty Data</string>
+    <string name="error_msg">There is an error</string>
+    <string name="error_form">Please fill in all forms</string>
 </resources>

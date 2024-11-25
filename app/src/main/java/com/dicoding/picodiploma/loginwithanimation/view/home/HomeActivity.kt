@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
                 if (story != null) {
                     storyAdapter.submitList(story.listStory)
                 } else {
-                    Toast.makeText(this@HomeActivity, "Data is Empty", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@HomeActivity, getString(R.string.data_validty), Toast.LENGTH_SHORT).show()
                 }
             }
             viewModel.isLoading.observe(this@HomeActivity) { isLoading ->
@@ -61,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_logout -> {
                 viewModel.logout()
-                Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.logout_msg), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

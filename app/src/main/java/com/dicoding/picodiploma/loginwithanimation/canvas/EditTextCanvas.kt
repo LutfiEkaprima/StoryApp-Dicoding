@@ -32,14 +32,13 @@ class EditTextCanvas @JvmOverloads constructor(
                 else hideClearButton()
 
                 if (s.toString().length < 8) {
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
+                    setError(context.getString(R.string.password_confirm), null)
                 } else {
                     error = null
                 }
             }
 
             override fun afterTextChanged(s: Editable) {
-                // Do nothing.
             }
         })
     }

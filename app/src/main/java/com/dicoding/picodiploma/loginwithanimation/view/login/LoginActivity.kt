@@ -14,7 +14,6 @@ import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityLoginBind
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.home.HomeActivity
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.LoginViewModel
-import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {

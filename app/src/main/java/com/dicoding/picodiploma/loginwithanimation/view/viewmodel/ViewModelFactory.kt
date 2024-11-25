@@ -9,6 +9,7 @@ import com.dicoding.picodiploma.loginwithanimation.data.pref.dataStore
 import com.dicoding.picodiploma.loginwithanimation.di.Injection
 import com.dicoding.picodiploma.loginwithanimation.view.home.HomeViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.home.upload.UploadStoryViewModel
+import com.dicoding.picodiploma.loginwithanimation.view.signup.SignupViewModel
 
 class ViewModelFactory private constructor(
     private val userRepository: UserRepository,

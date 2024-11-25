@@ -97,7 +97,7 @@ class UploadStoryActivity : AppCompatActivity() {
                         }
                     }
                 }
-            } ?: showToast(getString(R.string.empty_image_warning))
+            }
         }
     }
 
@@ -127,13 +127,13 @@ class UploadStoryActivity : AppCompatActivity() {
             currentImageUri = uri
             showImage()
         } else {
-            Toast.makeText(this, "No Media Selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.select_media), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun showImage() {
         currentImageUri?.let {
-            Toast.makeText(this, "Show Image", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.iamge_show), Toast.LENGTH_SHORT).show()
             binding.previewImageView.setImageURI(it)
         }
     }

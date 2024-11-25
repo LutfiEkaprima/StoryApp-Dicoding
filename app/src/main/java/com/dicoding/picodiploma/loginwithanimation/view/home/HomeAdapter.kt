@@ -36,7 +36,7 @@ class HomeAdapter(private val onLoading: (Boolean) -> Unit)
                 .load(story.photoUrl)
                 .into(binding.imgItemPhoto)
 
-            val itemDataList = "story_data_list"
+            val itemDataList = "list_story"
             binding.cardView.setOnClickListener {
                 onLoading(true)
                 val context = itemView.context

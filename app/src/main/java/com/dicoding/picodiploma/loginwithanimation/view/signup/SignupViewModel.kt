@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.view.viewmodel
+package com.dicoding.picodiploma.loginwithanimation.view.signup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

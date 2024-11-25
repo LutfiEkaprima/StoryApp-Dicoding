@@ -9,7 +9,7 @@ import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityDetailSto
 
 class DetailStoryActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailStoryBinding
-    private val itemDataList = "story_data_list"
+    private val itemDataList = "list_story"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailStoryBinding.inflate(layoutInflater)

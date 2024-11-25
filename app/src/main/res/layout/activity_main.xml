@@ -21,14 +21,14 @@
 
     <ImageView
         android:id="@+id/headerImage"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="160dp"
+        android:layout_width="386dp"
+        android:layout_height="263dp"
+        android:layout_marginTop="76dp"
         android:contentDescription="@string/foto_main"
         android:scaleType="centerInside"
         android:src="@drawable/image_welcome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -39,5 +39,11 @@
     <string name="email_validyt">Email harus diisi</string>
     <string name="password_validyt">Password harus diisi</string>
     <string name="password_confirm">Password tidak boleh kurang dari 8 karakter</string>
-    <string name="fab_upload">Upload</string>
+    <string name="fab_upload" translatable="false">Upload</string>
+    <string name="select_media">Tidak ada Media yang di pilih</string>
+    <string name="iamge_show" translatable="false">Show Image</string>
+    <string name="logout_msg">Berhasil Keluar</string>
+    <string name="data_validty">Data Kosong</string>
+    <string name="error_msg">Terjadi Kesalahan</string>
+    <string name="error_form">Tolong Isi Semua Form</string>
 </resources>
