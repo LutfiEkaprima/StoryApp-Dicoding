@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="foto_main">foto_main</string>
+    <string name="main_title">Welcome to Dicoding Story!</string>
+    <string name="main_description">Want to share knowledge about Android, iOS, Machine Learning, Cloud, Front-End, Back-End, and other IT fields? Just Dicoding Story!</string>
+    <string name="main_login">Sign In</string>
+    <string name="main_signup">Sign Up</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Sign In</string>
+    <string name="message_welcome_page">Want to share knowledge about Android, iOS, Machine Learning, Cloud, Front-End, Back-End, and other IT fields? Just Dicoding Story!</string>
+    <string name="title_welcome_page">Welcome to Dicoding!</string>
+    <string name="title_signup_page">Complete your data below</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Enter your data first</string>
+    <string name="title_login_page">"Are you ready to upgrade your skills? "</string>
+    <string name="name">Name</string>
+    <string name="message_main_page">Happy Learning in Dicoding.</string>
+    <string name="greeting">Hello %1$s,</string>
+    <string name="logout">Log Out</string>
+    <string name="gambar">Image</string>
+    <string name="ed_name_signup">Enter Your Name</string>
+    <string name="ed_password_signup">Enter Password</string>
+    <string name="ed_email_signup">Enter Your Email</string>
+    <string name="ed_email_login">Enter Your Email</string>
+    <string name="ed_password_login">Enter Password</string>
+    <string name="story_name">Story Name</string>
+    <string name="imagestory">Image Story</string>
+    <string name="list_story">List Story</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="description">Description</string>
+    <string name="empty_image_warning">Image Empty !</string>
+    <string name="add_description_hint">Fill in the description</string>
+    <string name="success_login">Log In Succesfull</string>
+    <string name="fail_login">Log In Failed</string>
+    <string name="fail_action">An error occurred, please try again</string>
+    <string name="email_validyt">Email is required</string>
+    <string name="password_validyt">Password is required</string>
+    <string name="password_confirm">Password must not be less than 8 characters</string>
+</resources>
