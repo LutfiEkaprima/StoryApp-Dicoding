@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.dicoding.picodiploma.loginwithanimation.databinding.ItemStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.home.detail.DetailStoryActivity
 
-
 class HomeAdapter(private val onLoading: (Boolean) -> Unit)
     : ListAdapter<ListStoryItem, HomeAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
