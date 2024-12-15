@@ -24,8 +24,6 @@ import com.dicoding.picodiploma.loginwithanimation.view.reduceFileImage
 import com.dicoding.picodiploma.loginwithanimation.view.uriToFile
 import kotlinx.coroutines.launch
 
-
-
 class UploadStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadStoryBinding
     private var currentImageUri: Uri? = null

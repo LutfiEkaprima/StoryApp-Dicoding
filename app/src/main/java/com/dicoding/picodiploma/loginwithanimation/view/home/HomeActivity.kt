@@ -15,6 +15,7 @@ import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityHomeBindi
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.home.upload.UploadStoryActivity
 import com.dicoding.picodiploma.loginwithanimation.view.MainActivity
+import com.dicoding.picodiploma.loginwithanimation.view.home.maps.MapsActivity
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -31,7 +32,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, UploadStoryActivity::class.java)
             startActivity(intent)
         }
-
 
         lifecycleScope.launch {
             val factory = ViewModelFactory.getInstance(this@HomeActivity)
@@ -68,9 +68,8 @@ class HomeActivity : AppCompatActivity() {
                 finish()
                 true
             }
-
             R.id.action_maps -> {
-//                val intent = Intent(this, MapsActivity::class.java)
+                val intent = Intent(this, MapsActivity::class.java)
                 startActivity(intent)
                 true
             }
@@ -78,8 +77,6 @@ class HomeActivity : AppCompatActivity() {
 
 
         }
-
-
     }
 
     private fun setupRecycleView() {
