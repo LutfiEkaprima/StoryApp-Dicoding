@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     testImplementation(libs.junit.junit)
     testImplementation(libs.junit.junit)
@@ -77,7 +78,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
-    testImplementation ("org.mockito:mockito-core:4.11.0")
-    testImplementation ("net.bytebuddy:byte-buddy:1.14.5")
+    testImplementation (libs.mockito.core.v4110)
+    testImplementation (libs.byte.buddy)
 
 }

@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.loginwithanimation.view.home.upload
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -22,6 +23,7 @@ import com.dicoding.picodiploma.loginwithanimation.view.home.HomeActivity
 import com.dicoding.picodiploma.loginwithanimation.view.reduceFileImage
 import com.dicoding.picodiploma.loginwithanimation.view.uriToFile
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
+import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.launch
 
 class UploadStoryActivity : AppCompatActivity() {
@@ -30,6 +32,8 @@ class UploadStoryActivity : AppCompatActivity() {
 
     private lateinit var viewModel: UploadStoryViewModel
 
+    private var currentLat: Float? = null
+    private var currentLon: Float? = null
 
     private val requestPermissionLauncer = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -40,6 +44,35 @@ class UploadStoryActivity : AppCompatActivity() {
             Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
         }
 
+    }
+
+    private val locationRequestLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            getCurrentLocation()
+        } else {
+            showToast("Izin lokasi ditolak")
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun getCurrentLocation() {
+        val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        try {
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    currentLat = location.latitude.toFloat()
+                    currentLon = location.longitude.toFloat()
+                    binding.locationStatus.visibility = View.VISIBLE
+                    binding.locationStatus.text = "Lokasi ditambahkan: ${location.latitude}, ${location.longitude}"
+                } else {
+                    showToast("Gagal mendapatkan lokasi")
+                }
+            }
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+        }
     }
 
     private fun allPermissionsGranted() =
@@ -64,37 +97,48 @@ class UploadStoryActivity : AppCompatActivity() {
 
         val factory = ViewModelFactory.getInstance(this@UploadStoryActivity)
         viewModel = ViewModelProvider(this@UploadStoryActivity, factory)[UploadStoryViewModel::class.java]
+
+        binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    locationRequestLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                } else {
+                    getCurrentLocation()
+                }
+            } else {
+                currentLat = null
+                currentLon = null
+                binding.locationStatus.visibility = View.GONE
+            }
+        }
     }
 
     private fun uploadImage() {
         currentImageUri?.let { uri ->
             lifecycleScope.launch {
                 val imageFile = uriToFile(uri, this@UploadStoryActivity).reduceFileImage()
-                Log.d("Image File", "showImage: ${imageFile.path}")
                 val description = binding.edAddDescription.text.toString()
 
-                viewModel.uploadImage( imageFile, description).observe(this@UploadStoryActivity) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is Result.Loading -> {
-                                showLoading(true)
-                            }
-
-                            is Result.Success -> {
-                                result.data.message?.let { showToast(it) }
-                                val intent = Intent(this@UploadStoryActivity, HomeActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                                showLoading(false)
-                            }
-
-                            is Result.Error -> {
-                                showToast(result.error)
-                                showLoading(false)
+                viewModel.uploadImage(imageFile, description, currentLat, currentLon)
+                    .observe(this@UploadStoryActivity) { result ->
+                        if (result != null) {
+                            when (result) {
+                                is Result.Loading -> showLoading(true)
+                                is Result.Success -> {
+                                    result.data.message?.let { showToast(it) }
+                                    val intent = Intent(this@UploadStoryActivity, HomeActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    showLoading(false)
+                                    Log.d("UploadStory", "Lat: $currentLat, Lon: $currentLon")
+                                }
+                                is Result.Error -> {
+                                    showToast(result.error)
+                                    showLoading(false)
+                                }
                             }
                         }
                     }
-                }
             }
         }
     }

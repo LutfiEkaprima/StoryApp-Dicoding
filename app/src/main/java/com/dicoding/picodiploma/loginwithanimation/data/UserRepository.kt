@@ -1,6 +1,5 @@
 package com.dicoding.picodiploma.loginwithanimation.data
 
-import android.util.Log
 import androidx.datastore.core.IOException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -19,6 +18,7 @@ import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.first
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -46,7 +46,7 @@ class UserRepository private constructor(
         return apiService.login(email, password)
     }
 
-    fun uploadImage(imageFile: File, description: String) = liveData {
+    fun uploadImage(imageFile: File, description: String, lat: Float?, lon: Float?) = liveData {
         emit(Result.Loading)
         val requestBody = description.toRequestBody("text/plain".toMediaType())
         val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
@@ -57,12 +57,25 @@ class UserRepository private constructor(
         )
         try {
             val token = userPreference.getToken().first()
-            val successResponse = ApiConfig.getApiService(token).uploadImage(multipartBody, requestBody)
-            Log.d("API Response", "Response: $successResponse")
+            val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("photo", imageFile.name, requestImageFile)
+                .addFormDataPart("description", description)
+
+            val latRequestBody = lat?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+            val lonRequestBody = lon?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+
+            lat?.let { builder.addFormDataPart("lat", it.toString()) }
+            lon?.let { builder.addFormDataPart("lon", it.toString()) }
+
+            val successResponse = ApiConfig.getApiService(token).uploadImage(
+                multipartBody,
+                requestBody,
+                latRequestBody,
+                lonRequestBody
+            )
             emit(Result.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
-            Log.e("API Error", "Error Body: $errorBody")
             val errorResponse = Gson().fromJson(errorBody, FileUploadResponse::class.java)
             emit(errorResponse.message?.let { Result.Error(it) })
         }

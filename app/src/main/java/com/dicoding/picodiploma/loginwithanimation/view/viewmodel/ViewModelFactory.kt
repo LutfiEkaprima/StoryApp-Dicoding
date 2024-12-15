@@ -10,6 +10,7 @@ import com.dicoding.picodiploma.loginwithanimation.di.Injection
 import com.dicoding.picodiploma.loginwithanimation.view.home.HomeViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.home.maps.MapsViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.home.upload.UploadStoryViewModel
+import com.dicoding.picodiploma.loginwithanimation.view.login.LoginViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.signup.SignupViewModel
 
 class ViewModelFactory private constructor(

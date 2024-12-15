@@ -25,6 +25,8 @@ class DetailStoryActivity : AppCompatActivity() {
             binding.tvDetailName.text = storyItem.name
             binding.tvStoryTime.text = storyItem.createdAt
             binding.tvDetailDescription.text = storyItem.description
+            binding.lat.text = storyItem.lat.toString()
+            binding.lon.text = storyItem.lon.toString()
 
             Glide.with(this)
                 .load(storyItem.photoUrl)

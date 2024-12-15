@@ -5,5 +5,5 @@ import com.dicoding.picodiploma.loginwithanimation.data.UserRepository
 import java.io.File
 
 class UploadStoryViewModel(private val repository: UserRepository) : ViewModel() {
-    fun uploadImage(file: File, description: String) = repository.uploadImage( file, description)
+    fun uploadImage(file: File, description: String, lat: Float?, lon: Float?) = repository.uploadImage(file, description, lat, lon)
 }
