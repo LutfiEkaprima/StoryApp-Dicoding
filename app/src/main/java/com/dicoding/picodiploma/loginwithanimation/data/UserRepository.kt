@@ -2,7 +2,12 @@ package com.dicoding.picodiploma.loginwithanimation.data
 
 import android.util.Log
 import androidx.datastore.core.IOException
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiConfig
 import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiService
 import com.dicoding.picodiploma.loginwithanimation.data.response.ErrorResponse
@@ -10,6 +15,7 @@ import com.dicoding.picodiploma.loginwithanimation.data.response.FileUploadRespo
 import com.dicoding.picodiploma.loginwithanimation.data.response.LoginResponse
 import com.dicoding.picodiploma.loginwithanimation.data.response.RegisterResponse
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
+import com.dicoding.picodiploma.loginwithanimation.data.response.ListStoryItem
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.first
 import okhttp3.MediaType.Companion.toMediaType
@@ -62,10 +68,20 @@ class UserRepository private constructor(
         }
     }
 
+    fun getQuote(): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20
+            ),
+            pagingSourceFactory = {
+                QuotePagingSource(apiService)
+            }
+        ).liveData
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: UserRepository? = null
-
         fun getInstance(apiService: ApiService, userPreference: UserPreference): UserRepository {
             return INSTANCE ?: synchronized(this) {
                 val instance = UserRepository(apiService,userPreference)
@@ -73,5 +89,6 @@ class UserRepository private constructor(
                 instance
             }
         }
+
     }
 }

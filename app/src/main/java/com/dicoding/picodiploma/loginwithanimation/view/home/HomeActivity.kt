@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityHomeBinding
@@ -36,19 +37,15 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val factory = ViewModelFactory.getInstance(this@HomeActivity)
             viewModel = ViewModelProvider(this@HomeActivity, factory)[HomeViewModel::class.java]
-            viewModel.listStoryItem.observe(this@HomeActivity) { story ->
-                if (story != null) {
-                    storyAdapter.submitList(story.listStory)
-                } else {
-                    Toast.makeText(this@HomeActivity, getString(R.string.data_validty), Toast.LENGTH_SHORT).show()
-                }
+            viewModel.quote.observe(this@HomeActivity) {
+                storyAdapter.submitData(lifecycle, it)
+
             }
             viewModel.isLoading.observe(this@HomeActivity) { isLoading ->
                 showLoading(isLoading)
             }
 
             setupRecycleView()
-            viewModel.findListStoryItem()
         }
     }
 
@@ -82,10 +79,14 @@ class HomeActivity : AppCompatActivity() {
         storyAdapter = HomeAdapter { isLoading ->
             showLoading(isLoading)
         }
+
         binding.rvEvent.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
-            adapter = storyAdapter
+            adapter = storyAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter { storyAdapter.retry() }
+            )
         }
+
     }
 
     private fun showLoading(isLoading: Boolean) {

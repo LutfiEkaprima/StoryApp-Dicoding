@@ -47,4 +47,5 @@
     <string name="error_msg">Terjadi Kesalahan</string>
     <string name="error_form">Tolong Isi Semua Form</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="retry">retry</string>
 </resources>
