@@ -5,22 +5,27 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.dicoding.picodiploma.loginwithanimation.data.Result
+import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var viewModel: MapsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +33,48 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        viewModel = ViewModelProvider(this, factory)[MapsViewModel::class.java]
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        viewModel.findmapsStoryItem()
+
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.listStoryItem.observe(this) { response ->
+            if (response?.listStory != null && response.listStory.isNotEmpty()) {
+                for (storyItem in response.listStory) {
+                    storyItem?.let { item ->
+                        val latitude = item.lat
+                        val longitude = item.lon
+                        val name = item.name ?: "Unknown"
+                        val description = item.description ?: "No description"
+
+                        if (latitude != null && longitude != null) {
+                            val position = LatLng(latitude, longitude)
+                            mMap.addMarker(
+                                MarkerOptions()
+                                    .position(position)
+                                    .title(name)
+                                    .snippet(description)
+                            )
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(this, "No stories found or data is null.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Observe loading state
+        viewModel.isLoading.observe(this) { isLoading ->
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -45,7 +88,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         getMyLocation()
         setMapStyle()
+        viewModel.findmapsStoryItem() // Fetch story data
     }
+
 
     private val requestPermissionLauncher =
         registerForActivityResult(

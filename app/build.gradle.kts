@@ -65,5 +65,6 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.exifinterface)
+    implementation(libs.androidx.paging.runtime.ktx)
 
 }

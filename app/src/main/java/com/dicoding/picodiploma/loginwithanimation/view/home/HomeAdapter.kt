@@ -60,6 +60,4 @@ class HomeAdapter(private val onLoading: (Boolean) -> Unit)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(getItem(position), onLoading)
     }
-
-
 }

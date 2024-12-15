@@ -23,7 +23,6 @@ class HomeViewModel(private val userPreference: UserPreference) : ViewModel() {
         viewModelScope.launch {
             try {
                 val token = userPreference.getToken().first()
-
                 _listStoryItem.value = ApiConfig.getApiService(token).getStories()
             }catch (e: Exception) {
                 _listStoryItem.postValue(ListStoryResponse(listOf(),true, "Unexpected error: ${e.localizedMessage}"))
