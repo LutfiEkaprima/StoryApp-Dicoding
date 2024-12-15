@@ -68,8 +68,18 @@ class HomeActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
+            R.id.action_maps -> {
+//                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
+
+
         }
+
+
     }
 
     private fun setupRecycleView() {
