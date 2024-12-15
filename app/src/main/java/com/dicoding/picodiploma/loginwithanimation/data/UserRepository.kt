@@ -62,8 +62,6 @@ class UserRepository private constructor(
         }
     }
 
-
-
     companion object {
         @Volatile
         private var INSTANCE: UserRepository? = null
