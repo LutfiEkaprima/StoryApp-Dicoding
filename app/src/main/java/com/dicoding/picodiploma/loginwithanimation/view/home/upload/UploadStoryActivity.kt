@@ -15,13 +15,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.dicoding.picodiploma.loginwithanimation.R
-import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.data.Result
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityUploadStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.getImageUri
 import com.dicoding.picodiploma.loginwithanimation.view.home.HomeActivity
 import com.dicoding.picodiploma.loginwithanimation.view.reduceFileImage
 import com.dicoding.picodiploma.loginwithanimation.view.uriToFile
+import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
 class UploadStoryActivity : AppCompatActivity() {

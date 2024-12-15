@@ -51,6 +51,10 @@ dependencies {
     implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.datastore.preferences)
@@ -73,5 +77,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
+    testImplementation ("org.mockito:mockito-core:4.11.0")
+    testImplementation ("net.bytebuddy:byte-buddy:1.14.5")
 
 }

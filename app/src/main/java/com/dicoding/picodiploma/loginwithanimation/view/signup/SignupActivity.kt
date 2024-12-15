@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.dicoding.picodiploma.loginwithanimation.R
+import com.dicoding.picodiploma.loginwithanimation.databinding.ActivitySignupBinding
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
-import com.dicoding.picodiploma.loginwithanimation.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
 

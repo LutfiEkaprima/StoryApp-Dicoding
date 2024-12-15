@@ -9,14 +9,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityHomeBinding
-import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
-import com.dicoding.picodiploma.loginwithanimation.view.home.upload.UploadStoryActivity
 import com.dicoding.picodiploma.loginwithanimation.view.MainActivity
 import com.dicoding.picodiploma.loginwithanimation.view.home.maps.MapsActivity
+import com.dicoding.picodiploma.loginwithanimation.view.home.upload.UploadStoryActivity
+import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {

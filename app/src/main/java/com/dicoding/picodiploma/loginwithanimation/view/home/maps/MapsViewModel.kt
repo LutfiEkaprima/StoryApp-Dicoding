@@ -3,14 +3,9 @@ package com.dicoding.picodiploma.loginwithanimation.view.home.maps
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.dicoding.picodiploma.loginwithanimation.data.UserRepository
-import com.dicoding.picodiploma.loginwithanimation.data.response.ListStoryResponse
-import com.dicoding.picodiploma.loginwithanimation.di.Injection
-import com.dicoding.picodiploma.loginwithanimation.data.Result
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
+import com.dicoding.picodiploma.loginwithanimation.data.response.ListStoryResponse
 import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiConfig
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

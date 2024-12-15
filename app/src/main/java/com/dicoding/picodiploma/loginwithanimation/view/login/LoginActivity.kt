@@ -11,9 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityLoginBinding
-import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.home.HomeActivity
 import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.LoginViewModel
+import com.dicoding.picodiploma.loginwithanimation.view.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {

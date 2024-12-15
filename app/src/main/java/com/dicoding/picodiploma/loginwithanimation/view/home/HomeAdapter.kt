@@ -1,7 +1,5 @@
 package com.dicoding.picodiploma.loginwithanimation.view.home
 
-import androidx.recyclerview.widget.ListAdapter
-import com.dicoding.picodiploma.loginwithanimation.data.response.ListStoryItem
 import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
@@ -12,6 +10,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dicoding.picodiploma.loginwithanimation.data.response.ListStoryItem
 import com.dicoding.picodiploma.loginwithanimation.databinding.ItemStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.home.detail.DetailStoryActivity
 
