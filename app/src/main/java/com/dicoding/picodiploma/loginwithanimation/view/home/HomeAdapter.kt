@@ -53,7 +53,6 @@ class HomeAdapter(private val onLoading: (Boolean) -> Unit)
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)

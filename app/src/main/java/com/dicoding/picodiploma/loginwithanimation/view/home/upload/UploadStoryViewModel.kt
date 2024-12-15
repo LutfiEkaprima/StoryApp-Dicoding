@@ -6,5 +6,4 @@ import java.io.File
 
 class UploadStoryViewModel(private val repository: UserRepository) : ViewModel() {
     fun uploadImage(file: File, description: String) = repository.uploadImage( file, description)
-
 }
