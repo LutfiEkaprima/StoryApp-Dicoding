@@ -60,8 +60,6 @@ class UserRepository private constructor(
             val errorResponse = Gson().fromJson(errorBody, FileUploadResponse::class.java)
             emit(errorResponse.message?.let { Result.Error(it) })
         }
-
-
     }
 
     companion object {
