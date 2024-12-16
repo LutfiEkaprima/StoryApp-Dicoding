@@ -87,7 +87,7 @@ class UserRepository private constructor(
                 pageSize = 20
             ),
             pagingSourceFactory = {
-                QuotePagingSource(apiService)
+                QuotePagingSource(userPreference)
             }
         ).liveData
     }
